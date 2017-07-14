@@ -8,13 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cibertec.pe.recetapp.Adapters.RecetasAdapter;
 import cibertec.pe.recetapp.Entities.Receta;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewRecetas;
     List<Receta> recetaList;
-
+    RecetasAdapter recetasAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRecetas.setLayoutManager(linearLayoutManager);
 
-        crearData();
+        recetasAdapter = new RecetasAdapter(getApplicationContext(), recetaList);
+
+        recyclerViewRecetas.setAdapter(recetasAdapter);
+
+        createData();
     }
 
-    public void crearData(){
+    public void createData(){
         recetaList = new ArrayList<>();
         recetaList.add(new Receta("1","Papa rellena",4,"Una comida peruana","Cocer la papa","image",0));
         recetaList.add(new Receta("2","Palta rellena",2,"Una comida peruana","Cocer la palta","image",0));
