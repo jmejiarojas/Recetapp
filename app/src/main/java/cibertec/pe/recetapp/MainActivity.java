@@ -16,10 +16,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewRecetas;
     List<Receta> recetaList;
     RecetasAdapter recetasAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createData();
 
         recyclerViewRecetas = (RecyclerView) findViewById(R.id.recyclerRecetas);
         LinearLayoutManager linearLayoutManager =
@@ -27,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRecetas.setLayoutManager(linearLayoutManager);
 
-        recetasAdapter = new RecetasAdapter(getApplicationContext(), recetaList);
+        recetasAdapter = new RecetasAdapter(this, recetaList);
 
         recyclerViewRecetas.setAdapter(recetasAdapter);
 
-        createData();
+
     }
 
     public void createData(){

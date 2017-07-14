@@ -40,7 +40,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textViewNombre.setText(recetaList.get(position).getNombre());
         holder.textViewDescripcion.setText(recetaList.get(position).getDescripcion());
-        holder.textViewNumPersonas.setText("Personas" + recetaList.get(position).getNumPersonas());
+        holder.textViewNumPersonas.setText("Personas: " + recetaList.get(position).getNumPersonas());
         holder.textViewPreparacion.setText(recetaList.get(position).getPreparacion());
 
     }
@@ -48,6 +48,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
     @Override
     public int getItemCount() {
         return recetaList.size();
+        //return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
