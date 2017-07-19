@@ -1,4 +1,4 @@
-package cibertec.pe.recetapp;
+package cibertec.pe.recetapp.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import java.util.List;
 
 import cibertec.pe.recetapp.Adapters.RecetasAdapter;
 import cibertec.pe.recetapp.Entities.Receta;
+import cibertec.pe.recetapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         recetasAdapter = new RecetasAdapter(this, recetaList);
 
         recyclerViewRecetas.setAdapter(recetasAdapter);
-
-
     }
 
     public void createData(){
