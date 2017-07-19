@@ -10,6 +10,7 @@ import java.util.List;
 
 import cibertec.pe.recetapp.Adapters.RecetasAdapter;
 import cibertec.pe.recetapp.Entities.Receta;
+import cibertec.pe.recetapp.Helpers.DataBase;
 import cibertec.pe.recetapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewRecetas;
     List<Receta> recetaList;
     RecetasAdapter recetasAdapter;
+
+    DataBase data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +47,9 @@ public class MainActivity extends AppCompatActivity {
         recetaList.add(new Receta("5","Rocoto relleno",3,"Una comida peruana","Cocer el rocoto","image",1));
         recetaList.add(new Receta("6","Carapulcra",3,"Una comida peruana","Cocinar el arroz","image",0));
         recetaList.add(new Receta("7","Arroz con pato",3,"Una comida peruana","Cocer el pato","image",1));
+
+        data = new DataBase(getApplicationContext());
+        data.openDatabase();
+        data.insertRecetas(recetaList);
     }
 }
