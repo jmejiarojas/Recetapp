@@ -1,6 +1,10 @@
 package cibertec.pe.recetapp.Entities;
 
+import android.content.ContentValues;
+
 import java.io.Serializable;
+
+import cibertec.pe.recetapp.Helpers.SQLConstants;
 
 /**
  * Created by USUARIO on 13/07/2017.
@@ -83,5 +87,20 @@ public class Receta implements Serializable{
 
     public void setFavorito(int favorito) {
         this.favorito = favorito;
+    }
+
+    //Content Values
+
+    public ContentValues toValues(){
+        ContentValues contentValues = new ContentValues(7);
+        contentValues.put(SQLConstants.COLUMN_ID, id);
+        contentValues.put(SQLConstants.COLUMN_NOMBRE, nombre);
+        contentValues.put(SQLConstants.COLUMN_DESCRIPCION, descripcion);
+        contentValues.put(SQLConstants.COLUMN_PREPARACION, preparacion);
+        contentValues.put(SQLConstants.COLUMN_PERSONAS, numPersonas);
+        contentValues.put(SQLConstants.COLUMN_IMAGEN, image);
+        contentValues.put(SQLConstants.COLUMN_FAV, favorito);
+
+        return contentValues;
     }
 }
