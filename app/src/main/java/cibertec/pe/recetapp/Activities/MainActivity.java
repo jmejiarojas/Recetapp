@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRecetas.setLayoutManager(linearLayoutManager);
 
-        recetasAdapter = new RecetasAdapter(this, recetaList);
-
-        recyclerViewRecetas.setAdapter(recetasAdapter);
+        //recetasAdapter = new RecetasAdapter(this, recetaList);
+        //recyclerViewRecetas.setAdapter(recetasAdapter);
+        update();
 
         //Add event to fab
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,5 +66,22 @@ public class MainActivity extends AppCompatActivity {
         data = new DataBase(getApplicationContext());
         data.openDatabase();
         data.insertRecetas(recetaList);
+    }
+
+    public List<Receta> getData(){
+        return data.getAll();
+    }
+
+    //Pintar la lista de Recetas desde la BD
+    public void update(){
+        recetasAdapter = new RecetasAdapter(this, getData());
+        recyclerViewRecetas.setAdapter(recetasAdapter);
+    }
+
+    //Este metodo se ejecuta cuando la actividad vuelve a estar activa
+    @Override
+    protected void onResume() {
+        super.onResume();
+        update();
     }
 }
