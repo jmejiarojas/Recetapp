@@ -1,9 +1,12 @@
 package cibertec.pe.recetapp.Activities;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +21,17 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewRecetas;
     List<Receta> recetaList;
     RecetasAdapter recetasAdapter;
-
     DataBase data;
+
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createData();
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         recyclerViewRecetas = (RecyclerView) findViewById(R.id.recyclerRecetas);
         LinearLayoutManager linearLayoutManager =
@@ -36,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         recetasAdapter = new RecetasAdapter(this, recetaList);
 
         recyclerViewRecetas.setAdapter(recetasAdapter);
+
+        //Add event to fab
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddRecetaActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void createData(){
