@@ -2,11 +2,13 @@ package cibertec.pe.recetapp.Helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cibertec.pe.recetapp.Entities.Receta;
@@ -58,5 +60,34 @@ public class DataBase {
                 }
             }
         }
+    }
+
+    public List<Receta> getAll(){
+        List<Receta> recetasList = new ArrayList<>();
+
+        //Cargamos el cursor con los datos de la tabla
+        Cursor cursor = sqLiteDatabase.query(SQLConstants.TABLE_RECETAS,
+                SQLConstants.ALL_COLUMNS,
+                null,
+                null,
+                null,
+                null,
+                null
+                );
+
+        //Cargando los datos del cursor a recetasList
+        while (cursor.moveToNext()){
+            Receta receta = new Receta();
+            receta.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_ID)));
+            receta.setNombre(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_NOMBRE)));
+            receta.setDescripcion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_DESCRIPCION)));
+            receta.setPreparacion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PREPARACION)));
+            receta.setNumPersonas(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_PERSONAS)));
+            receta.setImage(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_IMAGEN)));
+            receta.setFavorito(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_FAV)));
+            recetasList.add(receta);
+        }
+
+        return recetasList;
     }
 }
