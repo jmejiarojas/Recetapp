@@ -48,5 +48,6 @@ public class SQLConstants {
     };
 
     public static final String WHERE_CLAUSE_NOMBRE = "nombre=?";
+    public static final String  WHERE_CLAUSE_FAVORITOS = "favorito=?";
 
 }
