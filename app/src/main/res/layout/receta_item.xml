@@ -42,6 +42,11 @@
                 android:text="Esta es la preparacion de la Receta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/imageViewStarBlack"
+                android:src="@drawable/star_black"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
 
         </LinearLayout>
 

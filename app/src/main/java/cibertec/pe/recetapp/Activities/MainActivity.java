@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         update();
 
         //Definimos un callBack
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN) {
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
 
             //Aca, analizamos el movimiento
             @Override
