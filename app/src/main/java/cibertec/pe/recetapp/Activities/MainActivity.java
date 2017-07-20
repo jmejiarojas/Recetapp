@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -42,6 +43,36 @@ public class MainActivity extends AppCompatActivity {
         //recetasAdapter = new RecetasAdapter(this, recetaList);
         //recyclerViewRecetas.setAdapter(recetasAdapter);
         update();
+
+        //Definimos un callBack
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN) {
+
+            //Aca, analizamos el movimiento
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            //Lo que queremos hacer cuando movamos
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                //Me pasa la posicion que tiene el elemento en el adaptador
+                int position = viewHolder.getAdapterPosition();
+
+                //Capturamos el adaptador del recyclerViewRecetas
+                RecetasAdapter objAdapter = (RecetasAdapter) recyclerViewRecetas.getAdapter();
+
+                String nombreReceta = objAdapter.getRecetaList().get(position).getNombre();
+
+                data.deleteItem(nombreReceta);
+                update();
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+
+        //El itemTouchHelper se anhade al recyclerView
+        itemTouchHelper.attachToRecyclerView(recyclerViewRecetas);
 
         //Add event to fab
         fab.setOnClickListener(new View.OnClickListener() {
