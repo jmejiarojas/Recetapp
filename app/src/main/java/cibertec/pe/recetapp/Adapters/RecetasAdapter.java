@@ -21,11 +21,17 @@ import cibertec.pe.recetapp.R;
 public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHolder>{
 
     Context context;
+
     List<Receta> recetaList;
 
     public RecetasAdapter(Context context, List<Receta> recetaList) {
         this.context = context;
         this.recetaList = recetaList;
+    }
+
+    //Para poder acceder al listado de Recetas desde otra clase
+    public List<Receta> getRecetaList() {
+        return recetaList;
     }
 
     @Override
