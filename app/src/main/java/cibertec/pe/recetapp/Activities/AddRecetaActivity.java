@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 import cibertec.pe.recetapp.Entities.Receta;
 import cibertec.pe.recetapp.Helpers.DataBase;
 import cibertec.pe.recetapp.R;
@@ -30,7 +32,7 @@ public class AddRecetaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_receta);
 
-        editTextId = (EditText) findViewById(R.id.editTextID);
+        //git lg1editTextId = (EditText) findViewById(R.id.editTextID);
         editTextNombre = (EditText) findViewById(R.id.editTextNombre);
         editTexDescripcion = (EditText) findViewById(R.id.editTextDescripcion);
         editTextNumPersonas = (EditText) findViewById(R.id.editTextNumPersonas);
@@ -43,7 +45,7 @@ public class AddRecetaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                receta = new Receta(editTextId.getText().toString(),
+                receta = new Receta(UUID.randomUUID().toString(),
                         editTextNombre.getText().toString(),
                         Integer.parseInt(editTextNumPersonas.getText().toString()),
                         editTexDescripcion.getText().toString(),

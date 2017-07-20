@@ -50,7 +50,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
         holder.textViewPreparacion.setText(recetaList.get(position).getPreparacion());
 
 
-        if(recetaList.get(position).getFavorito() >= 1){
+        if(recetaList.get(position).getFavorito() == 1){
             holder.imageViewStar.setImageResource(R.drawable.star_yellow);
         }else{
             holder.imageViewStar.setImageResource(R.drawable.star_black);
