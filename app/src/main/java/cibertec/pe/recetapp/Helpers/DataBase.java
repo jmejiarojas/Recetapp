@@ -90,6 +90,33 @@ public class DataBase {
 
         return recetasList;
     }
+
+    public List<Receta> getFavoritos(){
+        List<Receta> recetasFav = new ArrayList<>();
+        String[] whereArgs = new String[] { String.valueOf(1)};
+        Cursor cursor = sqLiteDatabase.query(SQLConstants.TABLE_RECETAS,
+                SQLConstants.ALL_COLUMNS,
+                SQLConstants.WHERE_CLAUSE_FAVORITOS,
+                whereArgs,
+                null,
+                null,
+                null
+                );
+        while (cursor.moveToNext()){
+            Receta receta = new Receta();
+            receta.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_ID)));
+            receta.setNombre(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_NOMBRE)));
+            receta.setDescripcion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_DESCRIPCION)));
+            receta.setPreparacion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PREPARACION)));
+            receta.setNumPersonas(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_PERSONAS)));
+            receta.setImage(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_IMAGEN)));
+            receta.setFavorito(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_FAV)));
+            recetasFav.add(receta);
+        }
+
+        return recetasFav;
+    }
+
     /**
     * En este metodo borramos un item por el nombre de la receta,
     * este metodo es usado en el MainActivity en el metodo onSwiped
@@ -100,4 +127,6 @@ public class DataBase {
         String[] whereArgs = new String[] { String.valueOf(nombre)};
         sqLiteDatabase.delete(SQLConstants.TABLE_RECETAS, SQLConstants.WHERE_CLAUSE_NOMBRE, whereArgs);
     }
+
+
 }
