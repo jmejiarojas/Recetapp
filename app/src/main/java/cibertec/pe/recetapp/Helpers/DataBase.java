@@ -50,7 +50,7 @@ public class DataBase {
     //Para insertar varias recetas a la vez
     public void insertRecetas(List<Receta> recetas){
         long items = getItemCounts();
-        if(items == 0)//Solo vamos a insertar los datos, si esta vacia la tabla
+        if(items == 0) //Solo vamos a insertar los datos, si esta vacia la tabla
         {
             for (Receta receta: recetas) {
                 try{
@@ -89,5 +89,15 @@ public class DataBase {
         }
 
         return recetasList;
+    }
+    /**
+    * En este metodo borramos un item por el nombre de la receta,
+    * este metodo es usado en el MainActivity en el metodo onSwiped
+    * del simpleCallBack
+    * */
+    public void deleteItem(String nombre){
+        //String[] whereArgs = {nombre};
+        String[] whereArgs = new String[] { String.valueOf(nombre)};
+        sqLiteDatabase.delete(SQLConstants.TABLE_RECETAS, SQLConstants.WHERE_CLAUSE_NOMBRE, whereArgs);
     }
 }
