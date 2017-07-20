@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +112,28 @@ public class MainActivity extends AppCompatActivity {
     public void update(){
         recetasAdapter = new RecetasAdapter(this, getData());
         recyclerViewRecetas.setAdapter(recetasAdapter);
+    }
+
+    //Inflamos nuestro menu personalizado al activity
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_receta, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemFavoritos:
+                Toast.makeText(this, "Favs", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.itemPersonas:
+                Toast.makeText(this, "Personas", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Este metodo se ejecuta cuando la actividad vuelve a estar activa
