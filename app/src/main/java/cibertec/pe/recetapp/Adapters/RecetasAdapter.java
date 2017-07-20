@@ -1,6 +1,7 @@
 package cibertec.pe.recetapp.Adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -52,6 +53,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
 
         if(recetaList.get(position).getFavorito() == 1){
             holder.imageViewStar.setImageResource(R.drawable.star_yellow);
+            holder.imageReceta.setImageResource(R.drawable.favorito);
         }else{
             holder.imageViewStar.setImageResource(R.drawable.star_black);
         }
@@ -69,6 +71,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
 
         CardView cardView;
         ImageView imageViewStar;
+        ImageView imageReceta;
         TextView textViewNombre;
         TextView textViewNumPersonas;
         TextView textViewDescripcion;
@@ -83,6 +86,7 @@ public class RecetasAdapter extends RecyclerView.Adapter<RecetasAdapter.ViewHold
             textViewDescripcion = (TextView) itemView.findViewById(R.id.textViewDescripcion);
             textViewPreparacion = (TextView) itemView.findViewById(R.id.textViewPreparacion);
             imageViewStar = (ImageView) itemView.findViewById(R.id.imageViewStarBlack);
+            imageReceta = (ImageView) itemView.findViewById(R.id.imageReceta);
         }
     }
 }
