@@ -47,7 +47,8 @@ public class SQLConstants {
             COLUMN_FAV
     };
 
-    public static final String WHERE_CLAUSE_NOMBRE = "nombre=?";
-    public static final String  WHERE_CLAUSE_FAVORITOS = "favorito=?";
+    public static final String WHERE_CLAUSE_NOMBRE = COLUMN_NOMBRE + "=?";
+    public static final String  WHERE_CLAUSE_FAVORITOS = COLUMN_FAV + "=?";
+    public static final String  WHERE_CLAUSE_PERSONAS= COLUMN_PERSONAS + "=?";
 
 }
