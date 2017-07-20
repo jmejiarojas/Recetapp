@@ -47,4 +47,6 @@ public class SQLConstants {
             COLUMN_FAV
     };
 
+    public static final String WHERE_CLAUSE_NOMBRE = "nombre=?";
+
 }
