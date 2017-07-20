@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/itemFavoritos"
+        android:title="Favs"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/itemPersonas"
+        android:title="Per"
+        app:showAsAction="ifRoom"/>
+</menu>
